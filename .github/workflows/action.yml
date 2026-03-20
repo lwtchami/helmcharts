@@ -24,7 +24,12 @@ jobs:
         with:
           version: v3.4.0
 
+      - name: Clean chart releaser cache
+        run: |
+          rm -rf .cr-index
+          rm -rf .cr-release-packages
+
       - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.2.1
+        uses: helm/chart-releaser-action@v1.6.0
         env:
           CR_TOKEN: "${{ secrets.POC_GITHUB_TOKEN }}"
