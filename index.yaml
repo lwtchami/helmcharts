@@ -23,6 +23,16 @@ entries:
     version: 0.1.6
   xavki_redis:
   - apiVersion: v2
+    appVersion: 1.16.1
+    created: "2026-03-20T19:49:06.270652945Z"
+    description: A Helm chart for Kubernetes
+    digest: e5f0aa1ae223269d964ff5a130f34abef0e56ff2f3d5f80623528bd132dba679
+    name: xavki_redis
+    type: application
+    urls:
+    - https://github.com/lwtchami/helmcharts/releases/download/xavki_redis-0.1.3/xavki_redis-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
     appVersion: 1.16.0
     created: "2026-03-20T19:11:04.364235604Z"
     description: A Helm chart for Kubernetes
@@ -32,4 +42,4 @@ entries:
     urls:
     - https://github.com/lwtchami/helmcharts/releases/download/xavki_redis-0.1.2/xavki_redis-0.1.2.tgz
     version: 0.1.2
-generated: "2026-03-20T19:11:04.364251254Z"
+generated: "2026-03-20T19:49:06.270665559Z"
