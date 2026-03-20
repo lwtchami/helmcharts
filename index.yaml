@@ -3,6 +3,16 @@ entries:
   xavki_api:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2026-03-20T18:37:58.585791723Z"
+    description: A Helm chart for Kubernetes
+    digest: ce0f3ec40e2fd8e4717afe5410c3b81ef3d730054369eeb5ff5c36db0b3c7e4c
+    name: xavki_api
+    type: application
+    urls:
+    - https://github.com/lwtchami/helmcharts/releases/download/xavki_api-0.1.7/xavki_api-0.1.7.tgz
+    version: 0.1.7
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2026-03-20T18:23:13.834546544Z"
     description: A Helm chart for Kubernetes
     digest: 5fcc15cec9034a62e7463a800b5aff56a4cd8020d319584d4b3ba8c92ae79aa8
@@ -11,4 +21,4 @@ entries:
     urls:
     - https://github.com/lwtchami/helmcharts/releases/download/xavki_api-0.1.6/xavki_api-0.1.6.tgz
     version: 0.1.6
-generated: "2026-03-20T18:23:13.834552705Z"
+generated: "2026-03-20T18:37:58.585805119Z"
