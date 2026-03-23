@@ -7,22 +7,21 @@ helm:
   valuesFiles:
     - values-common.yaml
 
-targetCustomizations:
+targets:
+  - name: redis-0-1-2
+    clusterSelector:
+      matchLabels:
+        chart-redis: "0.1.2"
+    helm:
+      version: "0.1.2"
+      valuesFiles:
+        - values-0.1.2.yaml
 
-- name: redis-0-1-2
-  clusterSelector:
-    matchLabels:
-      chart-redis: "0.1.2"
-  helm:
-    version: "0.1.2"
-    valuesFiles:
-      - values-0.1.2.yaml
-
-- name: redis-0-1-3
-  clusterSelector:
-    matchLabels:
-      chart-redis: "0.1.3"
-  helm:
-    version: "0.1.3"
-    valuesFiles:
-      - values-0.1.3.yaml
+  - name: redis-0-1-3
+    clusterSelector:
+      matchLabels:
+        chart-redis: "0.1.3"
+    helm:
+      version: "0.1.3"
+      valuesFiles:
+        - values-0.1.3.yaml
