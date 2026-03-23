@@ -1,0 +1,13 @@
+defaultNamespace: redis
+
+helm:
+  repo: https://lwtchami.github.io/helmcharts  
+  chart: xavki_redis
+  version: "1.16.0"
+  releaseName: mytestredist
+
+targets:
+  - name: clusters-redis-1-16-0
+    clusterSelector:
+      matchLabels:
+        chart-redis: "1.16.0"
