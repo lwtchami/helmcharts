@@ -4,8 +4,6 @@ helm:
   repo: https://lwtchami.github.io/helmcharts
   chart: xavki_redis
   releaseName: mytestredist
-  valuesFiles:
-    - values-common.yaml
 
 targets:
   - name: redis-0-1-2
@@ -15,6 +13,7 @@ targets:
     helm:
       version: "0.1.2"
       valuesFiles:
+        - values-common.yaml
         - values-0.1.2.yaml
 
   - name: redis-0-1-3
@@ -24,4 +23,5 @@ targets:
     helm:
       version: "0.1.3"
       valuesFiles:
+        - values-common.yaml
         - values-0.1.3.yaml
