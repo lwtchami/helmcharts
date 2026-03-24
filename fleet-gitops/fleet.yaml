@@ -1,13 +1,10 @@
-defaultNamespace: redis
+namespace: redis
+targetCustomizations:
+- name: cluster1
+  helm:
+    values:
+      replication: false
+  clusterSelector:
+    matchLabels:
+      Redis: "0.1.2"
 
-helm:
-  repo: https://lwtchami.github.io/helmcharts
-  chart: xavki_redis
-  version: "0.1.2"
-  releaseName: redis-test
-
-targets:
-  - name: cluster1
-    clusterSelector:
-      matchLabels:
-        Redis: "0.1.2"
