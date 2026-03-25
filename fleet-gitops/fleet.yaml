@@ -23,7 +23,16 @@ targets:
       version: "0.1.3"
       values:
         redis_port: "6380"
-        
+  
+  - name: redis-0-1-4
+    clusterSelector:
+      matchLabels:
+        Redis: "0.1.4"
+    helm:
+      version: "0.1.4"
+      values:
+        redis_port: "6384"
+
   - name: no-match
     clusterSelector:
       matchExpressions:
@@ -32,6 +41,7 @@ targets:
           values:
             - "0.1.2"
             - "0.1.3"
+            - "0.1.4"
     ignore:
       conditions:
         - type: Ready
