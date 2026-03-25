@@ -5,14 +5,11 @@ helm:
   chart: xavki_redis
   releaseName: mytestredist
 
-  targets:
+targets:
   - name: redis-0-1-2
     clusterSelector:
-      matchExpressions:
-        - key: Redis
-          operator: In
-          values:
-            - "0.1.2"
+      matchLabels:
+        Redis: "0.1.2"
     helm:
       version: "0.1.2"
       values:
@@ -20,14 +17,9 @@ helm:
 
   - name: redis-0-1-3
     clusterSelector:
-      matchExpressions:
-        - key: Redis
-          operator: In
-          values:
-            - "0.1.3"
+      matchLabels:
+        Redis: "0.1.3"
     helm:
       version: "0.1.3"
       values:
         redis_port: "6380"
-
-        
