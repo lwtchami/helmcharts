@@ -4,5 +4,5 @@ metadata:
 {{ include "xavki_redis.header" . | indent 2}}
 data:
   redis-config: |
-    maxmemory 2mb
+    maxmemory 20mb
     maxmemory-policy allkeys-lru   
