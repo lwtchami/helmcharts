@@ -13,7 +13,7 @@ targets:
     helm:
       version: "0.1.2"
       values:
-        redis_port: "6379"
+        redis_port: "6380"
 
   - name: redis-0-1-3
     clusterSelector:
@@ -22,4 +22,4 @@ targets:
     helm:
       version: "0.1.3"
       values:
-        redis_port: "6380"
+        redis_port: "6379"
