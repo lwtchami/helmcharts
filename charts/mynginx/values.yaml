@@ -164,4 +164,4 @@ homepage:
   title: "DEMO: My Home Page"
   message: "BIENVENUE A LA DEMO !"
 
-clusterName: "cluster-default-value"
+clusterName: ""
