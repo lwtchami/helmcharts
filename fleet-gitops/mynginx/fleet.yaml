@@ -13,7 +13,7 @@ targets:
     helm:
       version: "0.1.0"
       values:
-        clusterName: {{ .ClusterLabels.management.cattle.io/cluster-name }}
+        clusterName: "${ClusterLabels[\"management.cattle.io/cluster-name\"]}"
 
  
   - name: no-match
