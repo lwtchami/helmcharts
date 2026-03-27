@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}
+data:
+  index.html: |
+    <html>
+      <head>
+        <style>
+          body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+          }
+          h1 {
+            font-size: 80px;
+            margin-top: 50px;
+          }
+          p {
+            font-size: 40px;
+            margin: 20px;
+          }
+          .info {
+            font-size: 30px;
+            color: #333;
+          }
+        </style>
+      </head>
+      <body>
+        <h1>{{ .Values.homepage.title }}</h1>
+        <p>{{ .Values.homepage.message }}</p>
+        <p class="info">Chart version: {{ .Chart.Version }}</p>
+        <p class="info">Chart Name: {{ .Chart.Name }}</p>
+        <p class="info">Release: {{ .Release.Name }}</p>
+        <p class="info">Cluster: {{ .Values.clusterName }}</p>
+      </body>
+    </html>
