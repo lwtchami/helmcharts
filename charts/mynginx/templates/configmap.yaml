@@ -4,6 +4,13 @@ metadata:
   name: {{ .Release.Name }}
 data:
   index.html: |
+    {{- $clusterName := .Values.clusterName }}
+    {{- if not $clusterName }}
+    {{- $nodes := lookup "v1" "Node" "" "" }}
+    {{- if $nodes.items }}
+    {{- $clusterName = (index $nodes.items 0).metadata.name | default "unknown" }}
+    {{- end }}
+    {{- end }}
     <html>
       <head>
         <style>
@@ -32,6 +39,6 @@ data:
         <p class="info">Chart version: {{ .Chart.Version }}</p>
         <p class="info">Chart Name: {{ .Chart.Name }}</p>
         <p class="info">Release: {{ .Release.Name }}</p>
-        <p class="info">Cluster: {{ .Values.clusterName }}</p>
+        <p class="info">Cluster: {{ $clusterName }}</p>
       </body>
     </html>
