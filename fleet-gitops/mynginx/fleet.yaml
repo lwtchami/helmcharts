@@ -13,7 +13,7 @@ targets:
     helm:
       version: "0.1.0"
       values:
-        clusterName: "$.ClusterLabels.name"
+        clusterName: "$.ClusterName"
 
  
   - name: no-match
