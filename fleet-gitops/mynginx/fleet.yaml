@@ -15,6 +15,15 @@ targets:
       values:
         clusterName: ""
 
+  - name: mynginx-0-1-1
+    clusterSelector:
+      matchLabels:
+        Mynginx: "0.1.1"
+    helm:
+      version: "0.1.1"
+      values:
+        clusterName: ""
+
  
   - name: no-match
     clusterSelector:
@@ -23,6 +32,7 @@ targets:
           operator: NotIn
           values:
             - "0.1.0"
+            - "0.1.1"
            
     ignore:
       conditions:
