@@ -17,7 +17,7 @@ data:
           body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background-color: #f4f4f4;
+            background: linear-gradient(135deg, #e6f4ea, #cdeccd);
           }
           h1 {
             font-size: 80px;
