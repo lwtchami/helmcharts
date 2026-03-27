@@ -1,5 +1,16 @@
 apiVersion: v1
 entries:
+  mynginx:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2026-03-27T20:31:51.429798428Z"
+    description: A Helm chart for Kubernetes
+    digest: c9ca297df26dd34d333bba627cf32e7db7df584fbc0585cba8773766bbfad073
+    name: mynginx
+    type: application
+    urls:
+    - https://github.com/lwtchami/helmcharts/releases/download/mynginx-0.1.0/mynginx-0.1.0.tgz
+    version: 0.1.0
   xavki_api:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -52,4 +63,4 @@ entries:
     urls:
     - https://github.com/lwtchami/helmcharts/releases/download/xavki_redis-0.1.2/xavki_redis-0.1.2.tgz
     version: 0.1.2
-generated: "2026-03-25T18:08:28.952790993Z"
+generated: "2026-03-27T20:31:51.429811733Z"
