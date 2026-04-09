@@ -11,6 +11,17 @@ entries:
     urls:
     - https://github.com/lwtchami/helmcharts/releases/download/btop-0.1.0/btop-0.1.0.tgz
     version: 0.1.0
+  htop:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2026-04-09T16:06:01.930013207Z"
+    description: A Helm chart for Kubernetes
+    digest: 92d15766629afbdc8d6d676ed684e8f740542e184c86d39d30301f7342c12cb1
+    name: htop
+    type: application
+    urls:
+    - https://github.com/lwtchami/helmcharts/releases/download/htop-0.1.0/htop-0.1.0.tgz
+    version: 0.1.0
   mynginx:
   - apiVersion: v2
     appVersion: 1.16.1
@@ -84,4 +95,4 @@ entries:
     urls:
     - https://github.com/lwtchami/helmcharts/releases/download/xavki_redis-0.1.2/xavki_redis-0.1.2.tgz
     version: 0.1.2
-generated: "2026-04-09T14:56:50.439799321Z"
+generated: "2026-04-09T16:06:01.930038414Z"
