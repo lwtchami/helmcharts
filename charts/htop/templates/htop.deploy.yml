@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+{{ include "htop.header" . | indent 2}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: htop-{{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: htop-{{ .Release.Name }}
+    spec:
+      hostPID: true
+      containers:
+        - name: htop-{{ .Release.Name }}
+          image: {{ .Values.alpine_image }}
+          command:
+            - sh
+            - -c
+            - "apk add --no-cache htop ttyd && ttyd -p 7682 -i 0.0.0.0 htop"
+          env:
+            - name: LANG
+              value: "en_US.UTF-8"
+            - name: LC_ALL
+              value: "en_US.UTF-8"
+          ports:
+            - containerPort: 7682
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: proc
+              mountPath: /proc
+            - name: sys
+              mountPath: /sys
+            - name: os-release
+              mountPath: /etc/os-release
+      volumes:
+        - name: proc
+          hostPath:
+            path: /proc
+        - name: sys
+          hostPath:
+            path: /sys
+        - name: os-release
+          hostPath:
+            path: /etc/os-release
