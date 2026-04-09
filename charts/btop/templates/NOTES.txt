@@ -1,0 +1,3 @@
+BTOP :
+  Image : {{ .Values.alpine_image }}
+  Internal DNS : btop-{{ .Release.Name }}.{{ .Release.Namespace }}.svc.cluster.local
