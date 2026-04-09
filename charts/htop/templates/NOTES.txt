@@ -1,0 +1,3 @@
+HTOP :
+  Image : {{ .Values.alpine_image }}
+  Internal DNS : htop-{{ .Release.Name }}.{{ .Release.Namespace }}.svc.cluster.local
