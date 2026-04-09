@@ -1,0 +1,29 @@
+defaultNamespace: htop
+
+helm:
+  repo: https://lwtchami.github.io/helmcharts
+  chart: htop
+  releaseName: htoptest
+
+targets:
+  - name: htop-0-1-0
+    clusterSelector:
+      matchLabels:
+        Htop: "0.1.0"
+    helm:
+      version: "0.1.0"
+      values:
+        clusterName: ""
+ 
+  - name: no-match
+    clusterSelector:
+      matchExpressions:
+        - key: Htop
+          operator: NotIn
+          values:
+            - "0.1.0"
+           
+    ignore:
+      conditions:
+        - type: Ready
+    doNotDeploy: true
