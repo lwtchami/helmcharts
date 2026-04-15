@@ -13,19 +13,32 @@ data:
         }
       ]
     }
-  setup: |
-    #!/bin/sh
-    set -eu
-    mkdir -m 0777 -p "$VOL_DIR"
-  teardown: |
-    #!/bin/sh
-    set -eu
-    rm -rf "$VOL_DIR"
+
   helperPod.yaml: |
     apiVersion: v1
     kind: Pod
+    metadata:
+      generateName: local-path-helper-
+      labels:
+        app: local-path-provisioner
     spec:
+      restartPolicy: Never
       containers:
       - name: helper
         image: {{ .Values.helperImage }}
         imagePullPolicy: IfNotPresent
+        command: ["/bin/sh", "-c"]
+        args:
+          - |
+            mkdir -p "$VOL_DIR"
+            chmod 0777 "$VOL_DIR"
+
+  setup: |
+    #!/bin/sh
+    set -eu
+    mkdir -m 0777 -p "$VOL_DIR"
+
+  teardown: |
+    #!/bin/sh
+    set -eu
+    rm -rf "$VOL_DIR"
