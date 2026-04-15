@@ -1,0 +1,11 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: {{ .Values.storageClassName }}
+  annotations:
+    {{- if .Values.setAsDefault }}
+    storageclass.kubernetes.io/is-default-class: "true"
+    {{- end }}
+provisioner: rancher.io/local-path
+volumeBindingMode: WaitForFirstConsumer
+reclaimPolicy: {{ .Values.reclaimPolicy }}
