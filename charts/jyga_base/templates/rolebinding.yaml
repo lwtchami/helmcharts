@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: local-path-provisioner-bind
+  namespace: {{ .Release.Namespace }}
+subjects:
+- kind: ServiceAccount
+  name: local-path-provisioner-service-account
+  namespace: {{ .Release.Namespace }}
+roleRef:
+  kind: Role
+  name: local-path-provisioner-role
+  apiGroup: rbac.authorization.k8s.io
