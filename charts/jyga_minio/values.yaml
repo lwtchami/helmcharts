@@ -1,0 +1,32 @@
+replicaCount: 1
+
+image:
+  repository: cgr.dev/chainguard/minio
+  digest: "sha256:43487a4155e5d9ff874480ae63e9b8cb36676bd0f25114da953c6664471a8d42"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  apiPort: 9000
+  consolePort: 9001
+
+auth:
+  rootUser: admin
+  rootPassword: admin@2026
+
+persistence:
+  enabled: true
+  size: 10Gi
+  accessMode: ReadWriteOnce
+  storageClass: null   # 🔥 IMPORTANT
+
+resources: {}
+
+ingress:
+  enabled: true
+  className: nginx
+  hosts:
+    - host: minio.local
+      paths:
+        - path: /
+          pathType: Prefix

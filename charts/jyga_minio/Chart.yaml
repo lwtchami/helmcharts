@@ -1,0 +1,14 @@
+apiVersion: v2
+name: jyga_minio
+description: MinIO deployment (Chainguard hardened image)
+type: application
+version: 0.1.0
+appVersion: "RELEASE"
+
+keywords:
+  - minio
+  - s3
+  - object-storage
+
+maintainers:
+  - name: JYGA Team

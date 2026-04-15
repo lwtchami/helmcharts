@@ -1,0 +1,29 @@
+defaultNamespace: minio
+
+helm:
+  repo: https://lwtchami.github.io/helmcharts
+  chart: jyga_minio
+  releaseName: minio-test
+
+targets:
+  - name: minio-0-1-0
+    clusterSelector:
+      matchLabels:
+        Minio: "0.1.0"
+    helm:
+      version: "0.1.0"
+      values:
+        clusterName: ""
+ 
+  - name: no-match
+    clusterSelector:
+      matchExpressions:
+        - key: Minio
+          operator: NotIn
+          values:
+            - "0.1.0"
+           
+    ignore:
+      conditions:
+        - type: Ready
+    doNotDeploy: true
