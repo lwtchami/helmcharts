@@ -1,0 +1,29 @@
+defaultNamespace: base
+
+helm:
+  repo: https://lwtchami.github.io/helmcharts
+  chart: jyga_base
+  releaseName: basetest
+
+targets:
+  - name: Base-0-1-0
+    clusterSelector:
+      matchLabels:
+        Base: "0.1.0"
+    helm:
+      version: "0.1.0"
+      values:
+        clusterName: ""
+ 
+  - name: no-match
+    clusterSelector:
+      matchExpressions:
+        - key: Base
+          operator: NotIn
+          values:
+            - "0.1.0"
+           
+    ignore:
+      conditions:
+        - type: Ready
+    doNotDeploy: true

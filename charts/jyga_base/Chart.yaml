@@ -1,0 +1,13 @@
+apiVersion: v2
+name: jyga_minio
+description: local path provisioner deployment
+type: application
+version: 0.1.0
+appVersion: "RELEASE"
+
+keywords:
+  - local-path
+  - provisioner
+
+maintainers:
+  - name: JYGA Team

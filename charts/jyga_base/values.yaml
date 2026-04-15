@@ -1,0 +1,14 @@
+namespace: local-path-storage
+
+image:
+  repository: rancher/local-path-provisioner
+  tag: v0.0.28          # pinné — jamais latest
+
+helperImage: busybox:1.36.1   # pinné aussi
+
+storageClassName: local-path
+setAsDefault: true
+reclaimPolicy: Delete
+
+nodePathMap:
+  - /opt/local-path-provisioner
