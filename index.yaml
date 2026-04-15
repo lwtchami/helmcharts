@@ -22,6 +22,22 @@ entries:
     urls:
     - https://github.com/lwtchami/helmcharts/releases/download/htop-0.1.0/htop-0.1.0.tgz
     version: 0.1.0
+  jyga_base:
+  - apiVersion: v2
+    appVersion: RELEASE
+    created: "2026-04-15T19:18:15.776358456Z"
+    description: local path provisioner deployment
+    digest: 217d25bb0db73ca9629fe577aed4ee33dc498b696a2e72ac95074519d4d8e275
+    keywords:
+    - local-path
+    - provisioner
+    maintainers:
+    - name: JYGA Team
+    name: jyga_base
+    type: application
+    urls:
+    - https://github.com/lwtchami/helmcharts/releases/download/jyga_base-0.1.0/jyga_base-0.1.0.tgz
+    version: 0.1.0
   jyga_minio:
   - apiVersion: v2
     appVersion: RELEASE
@@ -112,4 +128,4 @@ entries:
     urls:
     - https://github.com/lwtchami/helmcharts/releases/download/xavki_redis-0.1.2/xavki_redis-0.1.2.tgz
     version: 0.1.2
-generated: "2026-04-15T17:12:10.377198025Z"
+generated: "2026-04-15T19:18:15.96671956Z"
