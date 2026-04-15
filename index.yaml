@@ -22,6 +22,23 @@ entries:
     urls:
     - https://github.com/lwtchami/helmcharts/releases/download/htop-0.1.0/htop-0.1.0.tgz
     version: 0.1.0
+  jyga_minio:
+  - apiVersion: v2
+    appVersion: RELEASE
+    created: "2026-04-15T17:12:10.377177717Z"
+    description: MinIO deployment (Chainguard hardened image)
+    digest: b36573cab18e081de28283e39ee7b56591d234426280dea8216358464cb9023b
+    keywords:
+    - minio
+    - s3
+    - object-storage
+    maintainers:
+    - name: JYGA Team
+    name: jyga_minio
+    type: application
+    urls:
+    - https://github.com/lwtchami/helmcharts/releases/download/jyga_minio-0.1.0/jyga_minio-0.1.0.tgz
+    version: 0.1.0
   mynginx:
   - apiVersion: v2
     appVersion: 1.16.1
@@ -95,4 +112,4 @@ entries:
     urls:
     - https://github.com/lwtchami/helmcharts/releases/download/xavki_redis-0.1.2/xavki_redis-0.1.2.tgz
     version: 0.1.2
-generated: "2026-04-09T16:06:01.930038414Z"
+generated: "2026-04-15T17:12:10.377198025Z"
