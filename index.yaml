@@ -22,6 +22,50 @@ entries:
     urls:
     - https://github.com/lwtchami/helmcharts/releases/download/htop-0.1.0/htop-0.1.0.tgz
     version: 0.1.0
+  jyga-base:
+  - apiVersion: v2
+    appVersion: RELEASE
+    created: "2026-04-16T19:04:54.003013783Z"
+    description: local path provisioner deployment
+    digest: 8a3caf6b6e3b0a54827b002e049c4741e9d144fb9769ef77ef0accf53a811b59
+    keywords:
+    - local-path
+    - provisioner
+    maintainers:
+    - name: JYGA Team
+    name: jyga-base
+    type: application
+    urls:
+    - https://github.com/lwtchami/helmcharts/releases/download/jyga-base-0.1.0/jyga-base-0.1.0.tgz
+    version: 0.1.0
+  jyga-minio:
+  - apiVersion: v2
+    appVersion: RELEASE
+    created: "2026-04-16T19:04:54.158430283Z"
+    description: MinIO deployment (Chainguard hardened image)
+    digest: 7eee88e2a4ce31bc8c38514178edf452f66c881030976591b3c72e5305dd43cd
+    keywords:
+    - minio
+    - s3
+    - object-storage
+    maintainers:
+    - name: JYGA Team
+    name: jyga-minio
+    type: application
+    urls:
+    - https://github.com/lwtchami/helmcharts/releases/download/jyga-minio-0.1.0/jyga-minio-0.1.0.tgz
+    version: 0.1.0
+  jyga-postgres:
+  - apiVersion: v2
+    appVersion: "17.4"
+    created: "2026-04-16T19:04:54.303503965Z"
+    description: A Helm chart to deploy a PostgreSQL StatefulSet
+    digest: 33e7ecea37e88f0babad76bb09f7763216cbd1cb668b0e0162daa262240ca5eb
+    name: jyga-postgres
+    type: application
+    urls:
+    - https://github.com/lwtchami/helmcharts/releases/download/jyga-postgres-0.1.0/jyga-postgres-0.1.0.tgz
+    version: 0.1.0
   jyga_base:
   - apiVersion: v2
     appVersion: RELEASE
@@ -128,4 +172,4 @@ entries:
     urls:
     - https://github.com/lwtchami/helmcharts/releases/download/xavki_redis-0.1.2/xavki_redis-0.1.2.tgz
     version: 0.1.2
-generated: "2026-04-15T19:18:15.96671956Z"
+generated: "2026-04-16T19:04:54.303521999Z"
