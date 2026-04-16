@@ -1,0 +1,29 @@
+defaultNamespace: farm-server
+
+helm:
+  repo: https://lwtchami.github.io/helmcharts
+  chart: jyga-postgres
+  releaseName: postgres-instance
+
+targets:
+  - name: postgres-0-1-0
+    clusterSelector:
+      matchLabels:
+        Postgres: "0.1.0"
+    helm:
+      version: "0.1.0"
+      values:
+        clusterName: ""
+ 
+  - name: no-match
+    clusterSelector:
+      matchExpressions:
+        - key: Postgres
+          operator: NotIn
+          values:
+            - "0.1.0"
+           
+    ignore:
+      conditions:
+        - type: Ready
+    doNotDeploy: true
