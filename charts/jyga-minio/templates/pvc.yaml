@@ -1,4 +1,5 @@
 {{- if .Values.persistence.enabled }}
+{{- include "jyga-minio.assertStorageClass" . }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
