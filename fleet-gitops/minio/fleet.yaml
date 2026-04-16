@@ -1,7 +1,7 @@
 defaultNamespace: farm-server
 
 dependsOn:
-  - name: base
+  - name: base-instance
     namespace: default
 
 helm:
