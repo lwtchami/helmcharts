@@ -60,14 +60,3 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
-
-{{/*
-  Vérifie que la StorageClass requise existe sur le cluster.
-  Échoue le rendu si elle est absente, forçant un message d'erreur clair.
-*/}}
-{{- define "jyga-postgres.assertStorageClass" -}}
-  {{- $sc := lookup "storage.k8s.io/v1" "StorageClass" "" .Values.persistentVolumeClaim.storageClassName -}}
-  {{- if not $sc -}}
-    {{- fail (printf "StorageClass '%s' introuvable. Déployez jyga-base d'abord (helm install jyga-base ou vérifiez le label Fleet 'Base: 0.1.0' sur le cluster)." .Values.persistentVolumeClaim.storageClassName) -}}
-  {{- end -}}
-{{- end -}}

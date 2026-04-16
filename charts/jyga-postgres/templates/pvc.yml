@@ -1,4 +1,3 @@
-{{- include "jyga-postgres.assertStorageClass" . }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
