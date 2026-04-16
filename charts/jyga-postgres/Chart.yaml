@@ -4,8 +4,3 @@ description:  A Helm chart to deploy a PostgreSQL StatefulSet
 type: application
 version: 0.1.0
 appVersion: "17.4"
-
-dependencies:
-  - name: jyga-base
-    version: "0.1.0"
-    repository: "https://lwtchami.github.io/helmcharts"
