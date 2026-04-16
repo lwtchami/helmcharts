@@ -2,7 +2,7 @@ defaultNamespace: base
 
 helm:
   repo: https://lwtchami.github.io/helmcharts
-  chart: jyga_base
+  chart: jyga-base
   releaseName: basetest
 
 targets:

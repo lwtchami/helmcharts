@@ -6,7 +6,7 @@ version: 0.1.0
 appVersion: "RELEASE"
 
 dependencies:
-  - name: jyga_base
+  - name: jyga-base
     version: "0.1.0"
     repository: "https://lwtchami.github.io/helmcharts"
 

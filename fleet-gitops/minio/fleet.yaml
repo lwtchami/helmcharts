@@ -1,4 +1,4 @@
-defaultNamespace: minio
+defaultNamespace: farm-server
 
 helm:
   repo: https://lwtchami.github.io/helmcharts
