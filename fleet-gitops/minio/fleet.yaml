@@ -1,8 +1,7 @@
 defaultNamespace: farm-server
 
 dependsOn:
-  - name: base-instance
-    namespace: default
+  - name: jyga-dev-fleet-gitrepo-fleet-gitops-base
 
 helm:
   repo: https://lwtchami.github.io/helmcharts

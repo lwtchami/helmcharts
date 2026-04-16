@@ -1,5 +1,8 @@
 defaultNamespace: farm-server
 
+dependsOn:
+  - name: jyga-dev-fleet-gitrepo-fleet-gitops-base
+
 helm:
   repo: https://lwtchami.github.io/helmcharts
   chart: jyga-postgres
