@@ -92,7 +92,7 @@ spec:
       spec:
         accessModes:
           - ReadWriteOnce
-        storageClassName: local-path
+        storageClassName: {{ .Values.persistentVolumeClaim.storageClassName | quote }}
         resources:
           requests:
             storage: {{ .Values.persistence.size }}
