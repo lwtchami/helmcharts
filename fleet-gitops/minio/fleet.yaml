@@ -1,5 +1,9 @@
 defaultNamespace: farm-server
 
+dependsOn:
+  - name: base
+    namespace: default
+
 helm:
   repo: https://lwtchami.github.io/helmcharts
   chart: jyga-minio
