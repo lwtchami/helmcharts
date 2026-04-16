@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "jyga_minio.fullname" . }}
+  name: {{ include "jyga-minio.fullname" . }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
@@ -26,7 +26,7 @@ spec:
             - containerPort: {{ .Values.service.consolePort }}
           envFrom:
             - secretRef:
-                name: {{ include "jyga_minio.fullname" . }}
+                name: {{ include "jyga-minio.fullname" . }}
           volumeMounts:
             - name: data
               mountPath: /data
@@ -48,7 +48,7 @@ spec:
         - name: data
 {{- if .Values.persistence.enabled }}
           persistentVolumeClaim:
-            claimName: {{ include "jyga_minio.fullname" . }}
+            claimName: {{ include "jyga-minio.fullname" . }}
 {{- else }}
           emptyDir: {}
 {{- end }}

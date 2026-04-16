@@ -2,8 +2,8 @@ defaultNamespace: minio
 
 helm:
   repo: https://lwtchami.github.io/helmcharts
-  chart: jyga_minio
-  releaseName: minio-test
+  chart: jyga-minio
+  releaseName: minio-instance
 
 targets:
   - name: minio-0-1-0
