@@ -1,9 +1,9 @@
-defaultNamespace: base
+defaultNamespace: default
 
 helm:
   repo: https://lwtchami.github.io/helmcharts
   chart: jyga-base
-  releaseName: basetest
+  releaseName: base-instance
 
 targets:
   - name: Base-0-1-0
