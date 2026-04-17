@@ -119,9 +119,7 @@ configMap:
   labels:
     app: postgres
   data:
-    POSTGRES_DB: ps_db
-    # POSTGRES_USER: postgres
-    # POSTGRES_PASSWORD: postgres 
+    POSTGRES_DB: machine_learning_farm 
     
 secret:
   name: postgres-secret
@@ -181,7 +179,7 @@ statefulSet:
             env:
               - name: PGDATA
                 value: /mnt/data/pgdata
-                
+
             initbd:
               - name: POSTGRES_DB
                 value: machine_learning_farm
