@@ -50,7 +50,6 @@ spec:
 
           env:
           {{- toYaml .env | nindent 12 }}
-          {{- toYaml .initbd | nindent 12 }}
 
           volumeMounts:
           {{- toYaml .volumeMounts | nindent 12 }}
