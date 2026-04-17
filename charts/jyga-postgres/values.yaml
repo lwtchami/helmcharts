@@ -181,6 +181,8 @@ statefulSet:
             env:
               - name: PGDATA
                 value: /mnt/data/pgdata
+                
+            initbd:
               - name: POSTGRES_DB
                 value: machine_learning_farm
 
