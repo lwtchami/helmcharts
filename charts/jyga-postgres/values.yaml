@@ -180,10 +180,6 @@ statefulSet:
               - name: PGDATA
                 value: /mnt/data/pgdata
 
-            initbd:
-              - name: POSTGRES_DB
-                value: machine_learning_farm
-
             volumeMounts:
               - mountPath: /mnt/data
                 name: postgredb
