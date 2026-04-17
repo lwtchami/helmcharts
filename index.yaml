@@ -38,6 +38,19 @@ entries:
     urls:
     - https://github.com/lwtchami/helmcharts/releases/download/jyga-base-0.1.0/jyga-base-0.1.0.tgz
     version: 0.1.0
+  jyga-batch:
+  - apiVersion: v2
+    appVersion: RELEASE
+    created: "2026-04-17T20:55:22.503087734Z"
+    description: farm server batch app deployment
+    digest: 1fc5de1045a9b26630b6a517b7b6e488a6623d2149a2e91420ce704ee289d90e
+    maintainers:
+    - name: JYGA Team
+    name: jyga-batch
+    type: application
+    urls:
+    - https://github.com/lwtchami/helmcharts/releases/download/jyga-batch-0.1.0/jyga-batch-0.1.0.tgz
+    version: 0.1.0
   jyga-minio:
   - apiVersion: v2
     appVersion: RELEASE
@@ -172,4 +185,4 @@ entries:
     urls:
     - https://github.com/lwtchami/helmcharts/releases/download/xavki_redis-0.1.2/xavki_redis-0.1.2.tgz
     version: 0.1.2
-generated: "2026-04-16T19:04:54.303521999Z"
+generated: "2026-04-17T20:55:22.827297453Z"
