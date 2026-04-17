@@ -131,7 +131,6 @@ secret:
     POSTGRES_USER: postgres
     POSTGRES_PASSWORD: postgres
 
-
 persistence:
   size: 5Gi
 
@@ -182,6 +181,8 @@ statefulSet:
             env:
               - name: PGDATA
                 value: /mnt/data/pgdata
+              - name: POSTGRES_DB
+                value: machine_learning_farm
 
             volumeMounts:
               - mountPath: /mnt/data
