@@ -1,0 +1,9 @@
+apiVersion: v2
+name: jyga-batch
+description: farm server batch app deployment
+type: application
+version: 0.1.0
+appVersion: "RELEASE"
+
+maintainers:
+  - name: JYGA Team

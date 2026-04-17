@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: batch-envs
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: batch
+data:
+  SPRING_PROFILES_ACTIVE: {{ .Values.config.profile }}
+  batch.datasource.ml.farm.url: {{ .Values.config.datasourceUrl }}
+  batch.datasource.ml.farm.username: {{ .Values.config.datasourceUsername }}
+  batch.datasource.ml.farm.password: {{ .Values.config.datasourcePassword }}
+  farm.s3.access-key: {{ .Values.config.s3AccessKey }}
+  farm.s3.secret-key: {{ .Values.config.s3SecretKey }}
+  farm.s3.endpoint: {{ .Values.config.s3EndPoint }}
+  
