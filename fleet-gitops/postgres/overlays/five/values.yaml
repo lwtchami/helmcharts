@@ -1,3 +1,5 @@
-clusterName: ""
-storage: 50Gi
-replicas: 3
+persistence:
+  size: 3Gi
+statefulSet:
+  spec:
+    replicas: 2
