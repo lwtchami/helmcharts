@@ -1,5 +1,5 @@
 persistence:
-  size: 2Gi
+  size: 1Gi
 statefulSet:
   spec:
     replicas: 3

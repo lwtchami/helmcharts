@@ -9,16 +9,6 @@ helm:
   releaseName: postgres-instance
 
 targets:
-  - name: postgres-0-1-0-farm-five
-    clusterSelector:
-      matchLabels:
-        Postgres: "0.1.0"
-        Farm: "five"
-    helm:
-      version: "0.1.0"
-      valuesFiles:               
-        - overlays/five/values.yaml
-
   - name: postgres-0-1-0-farm-four
     clusterSelector:
       matchLabels:
@@ -27,7 +17,7 @@ targets:
     helm:
       version: "0.1.0"
       valuesFiles:               
-        - overlays/four/values.yaml
+        - overlays/values.yaml
 
   - name: postgres-0-1-0-no-farm
     clusterSelector:
