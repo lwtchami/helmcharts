@@ -1,0 +1,29 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: batch-cronjob
+  namespace: {{ .Release.Namespace }}
+spec:
+  schedule: "{{ .Values.config.schedule }}"
+  concurrencyPolicy: Forbid
+  startingDeadlineSeconds: 60
+  suspend: false
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 1
+
+  jobTemplate:
+    spec:
+      ttlSecondsAfterFinished: 300
+      template:
+        spec:
+          restartPolicy: OnFailure
+          imagePullSecrets:                  
+            - name: ecr-pull-secret
+          containers:
+            - name: batch-container
+              image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+              imagePullPolicy: {{ .Values.image.pullPolicy }} 
+              envFrom:
+                - configMapRef:
+                    name: batch-envs

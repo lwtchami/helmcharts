@@ -1,0 +1,3 @@
+clusterName: ""
+storage: 50Gi
+replicas: 3

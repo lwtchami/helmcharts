@@ -1,14 +1,21 @@
 
   config:
     profile: dev
-    datasourceUrl: jdbc:postgresql://postgres-service:5432/machine_learning_farm
+    datasourceUrl: jdbc:postgresql://postgres-service:5432/postgres
     datasourceUsername: postgres
     datasourcePassword: postgres
     s3AccessKey: admin
     s3SecretKey: admin@2026
-    s3EndPoint: http://minio-instance-minio.svc.cluster.local:9000
+    s3EndPoint: http://minio-instance-minio:9000
+    schedule: "*/5 * * * *"
     
   aws:
     accessKey: ""
     secretKey: ""
     region: ca-central-1
+
+  image:
+    repository: 215734518063.dkr.ecr.ca-central-1.amazonaws.com/vision-system-batch-ml
+    tag: "0.1.9-rc"
+    pullPolicy: IfNotPresent
+  
