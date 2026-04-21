@@ -16,12 +16,8 @@ targets:
         Farm: "five"
     helm:
       version: "0.1.0"
-      values:               
-        persistence:
-          size: 3Gi
-        statefulSet:
-          spec:
-            replicas: 3
+      valuesFiles:               
+        - overlays/five/values.yaml
 
   - name: postgres-0-1-0-no-farm
     clusterSelector:
