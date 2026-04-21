@@ -16,9 +16,10 @@ targets:
         Farm: "five"
     helm:
       version: "0.1.0"
-      valuesFiles:
-        - overlays/five/values.yaml
-        
+      clusterName: ""
+      storage: 50Gi
+      replicas: 3
+
   - name: postgres-0-1-0-no-farm
     clusterSelector:
       matchLabels:
