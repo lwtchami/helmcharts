@@ -19,6 +19,16 @@ targets:
       valuesFiles:               
         - overlays/five/values.yaml
 
+  - name: postgres-0-1-0
+    clusterSelector:
+      matchLabels:
+        Postgres: "0.1.0"
+        Farm: "four"
+    helm:
+      version: "0.1.0"
+      valuesFiles:               
+        - overlays/four/values.yaml
+
   - name: postgres-0-1-0-no-farm
     clusterSelector:
       matchLabels:
