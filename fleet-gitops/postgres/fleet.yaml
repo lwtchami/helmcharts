@@ -13,10 +13,11 @@ targets:
     clusterSelector:
       matchLabels:
         Postgres: "0.1.0"
+        Farm: "five"
     helm:
       version: "0.1.0"
-      values:
-        clusterName: ""
+      valuesFiles:
+        - overlays/five/values.yaml
  
   - name: no-match
     clusterSelector:
