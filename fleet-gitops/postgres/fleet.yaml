@@ -18,7 +18,19 @@ targets:
       version: "0.1.0"
       valuesFiles:
         - overlays/five/values.yaml
- 
+        
+  - name: postgres-0-1-0-no-farm
+    clusterSelector:
+      matchLabels:
+        Postgres: "0.1.0"
+      matchExpressions:
+        - key: Farm
+          operator: DoesNotExist
+    ignore:
+      conditions:
+        - type: Ready
+    doNotDeploy: true
+
   - name: no-match
     clusterSelector:
       matchExpressions:
