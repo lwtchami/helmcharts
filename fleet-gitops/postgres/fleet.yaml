@@ -9,7 +9,7 @@ helm:
   releaseName: postgres-instance
 
 targets:
-  - name: postgres-0-1-0
+  - name: postgres-0-1-0-farm-five
     clusterSelector:
       matchLabels:
         Postgres: "0.1.0"
@@ -19,7 +19,7 @@ targets:
       valuesFiles:               
         - overlays/five/values.yaml
 
-  - name: postgres-0-1-0
+  - name: postgres-0-1-0-farm-four
     clusterSelector:
       matchLabels:
         Postgres: "0.1.0"
