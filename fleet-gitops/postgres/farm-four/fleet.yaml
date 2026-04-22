@@ -7,6 +7,7 @@ helm:
   repo: https://lwtchami.github.io/helmcharts
   chart: jyga-postgres
   releaseName: postgres-instance
+  recreate: true 
 
 targets:
  
