@@ -6,39 +6,40 @@ dependsOn:
 helm:
   repo: https://lwtchami.github.io/helmcharts
   chart: jyga-postgres
-  releaseName: postgres-instance-farm-five
+  releaseName: postgres-instance
+  recreate: true
 
 targets:
-  - name: postgres-0-1-0-farm-five
+
+  - name: deploy
     clusterSelector:
       matchLabels:
         Postgres: "0.1.0"
         Farm: "five"
     helm:
       version: "0.1.0"
-      valuesFiles:               
+      valuesFiles:
         - values.yaml
 
-  - name: postgres-0-1-0-no-farm-five
+  - name: no-match-farm
     clusterSelector:
-      matchLabels:
-        Postgres: "0.1.0"
       matchExpressions:
         - key: Farm
-          operator: DoesNotExist
+          operator: NotIn
+          values:
+            - "five"
     ignore:
       conditions:
         - type: Ready
     doNotDeploy: true
 
-  - name: no-match-farm-five
+  - name: no-match-version
     clusterSelector:
       matchExpressions:
         - key: Postgres
           operator: NotIn
           values:
             - "0.1.0"
-           
     ignore:
       conditions:
         - type: Ready
