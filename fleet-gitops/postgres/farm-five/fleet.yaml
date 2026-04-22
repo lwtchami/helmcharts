@@ -1,3 +1,4 @@
+# farm-five/fleet.yaml — simplifié, plus de no-match à gérer
 defaultNamespace: farm-server
 
 dependsOn:
@@ -7,39 +8,13 @@ helm:
   repo: https://lwtchami.github.io/helmcharts
   chart: jyga-postgres
   releaseName: postgres-instance
+  version: "0.1.0"
+  valuesFiles:
+    - values.yaml
 
 targets:
-  - name: postgres-0-1-0-farm-five
+  - name: deploy
     clusterSelector:
       matchLabels:
         Postgres: "0.1.0"
         Farm: "five"
-    helm:
-      version: "0.1.0"
-      valuesFiles:               
-        - overlays/values.yaml
-
-  - name: postgres-0-1-0-no-farm
-    clusterSelector:
-      matchLabels:
-        Postgres: "0.1.0"
-      matchExpressions:
-        - key: Farm
-          operator: DoesNotExist
-    ignore:
-      conditions:
-        - type: Ready
-    doNotDeploy: true
-
-  - name: no-match
-    clusterSelector:
-      matchExpressions:
-        - key: Postgres
-          operator: NotIn
-          values:
-            - "0.1.0"
-           
-    ignore:
-      conditions:
-        - type: Ready
-    doNotDeploy: true
