@@ -1,5 +1,8 @@
 defaultNamespace: farm-server
 
+labels:
+  app.kubernetes.io/name: jyga-postgres-four
+
 dependsOn:
   - name: jyga-dev-fleet-gitrepo-fleet-gitops-base
 
