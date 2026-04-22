@@ -6,7 +6,7 @@ dependsOn:
 helm:
   repo: https://lwtchami.github.io/helmcharts
   chart: jyga-postgres
-  releaseName: postgres-instance
+  releaseName: postgres-instance-farm-five
 
 targets:
   - name: postgres-0-1-0-farm-five
@@ -19,7 +19,7 @@ targets:
       valuesFiles:               
         - values.yaml
 
-  - name: postgres-0-1-0-no-farm
+  - name: postgres-0-1-0-no-farm-five
     clusterSelector:
       matchLabels:
         Postgres: "0.1.0"
@@ -31,7 +31,7 @@ targets:
         - type: Ready
     doNotDeploy: true
 
-  - name: no-match
+  - name: no-match-farm-five
     clusterSelector:
       matchExpressions:
         - key: Postgres
