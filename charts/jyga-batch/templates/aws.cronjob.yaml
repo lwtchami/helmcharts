@@ -4,88 +4,17 @@ kind: CronJob
 metadata:
   name: ecr-token-refresh
   namespace: {{ .Release.Namespace }}
+  labels:
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/instance: {{ .Release.Name }}
 spec:
-  schedule: "0 */6 * * *"
-  successfulJobsHistoryLimit: 1
+  schedule: {{ .Values.ecr.schedule | quote }}
+  concurrencyPolicy: Allow
   failedJobsHistoryLimit: 1
+  successfulJobsHistoryLimit: 1
+  suspend: false
   jobTemplate:
     spec:
       template:
         spec:
-          serviceAccountName: ecr-refresher
-          restartPolicy: Never
-          containers:
-            - name: ecr-refresh
-              image: amazon/aws-cli:latest
-              envFrom:
-                - secretRef:
-                    name: aws-ecr-creds
-              command:
-                - /bin/sh
-                - -c
-                - |
-                  set -e
-
-                  APISERVER=https://kubernetes.default.svc
-                  SERVICEACCOUNT=/var/run/secrets/kubernetes.io/serviceaccount
-                  KUBE_TOKEN=$(cat $SERVICEACCOUNT/token)
-                  CACERT=$SERVICEACCOUNT/ca.crt
-                  NAMESPACE=$(cat $SERVICEACCOUNT/namespace)
-
-                  echo "Generating ECR token..."
-                  TOKEN=$(aws ecr get-login-password --region $AWS_REGION)
-                  if [ -z "$TOKEN" ]; then
-                    echo "ERROR: Failed to get ECR token"
-                    exit 1
-                  fi
-
-                  AUTH=$(echo -n "AWS:$TOKEN" | base64 | tr -d '\n')
-                  DOCKERCONFIG=$(echo -n "{\"auths\":{\"215734518063.dkr.ecr.ca-central-1.amazonaws.com\":{\"auth\":\"$AUTH\"}}}" | base64 | tr -d '\n')
-
-                  PAYLOAD="{
-                    \"apiVersion\": \"v1\",
-                    \"kind\": \"Secret\",
-                    \"metadata\": {
-                      \"name\": \"ecr-pull-secret\",
-                      \"namespace\": \"$NAMESPACE\"
-                    },
-                    \"type\": \"kubernetes.io/dockerconfigjson\",
-                    \"data\": {
-                      \".dockerconfigjson\": \"$DOCKERCONFIG\"
-                    }
-                  }"
-
-                  echo "Checking if secret exists..."
-                  STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
-                    --cacert $CACERT \
-                    -H "Authorization: Bearer $KUBE_TOKEN" \
-                    $APISERVER/api/v1/namespaces/$NAMESPACE/secrets/ecr-pull-secret)
-
-                  echo "HTTP status: $STATUS"
-
-                  if [ "$STATUS" = "200" ]; then
-                    echo "Updating existing secret..."
-                    RESULT=$(curl -s -o /dev/null -w "%{http_code}" -X PUT \
-                      --cacert $CACERT \
-                      -H "Authorization: Bearer $KUBE_TOKEN" \
-                      -H "Content-Type: application/json" \
-                      $APISERVER/api/v1/namespaces/$NAMESPACE/secrets/ecr-pull-secret \
-                      -d "$PAYLOAD")
-                    echo "Update result: HTTP $RESULT"
-                  else
-                    echo "Creating new secret..."
-                    RESULT=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
-                      --cacert $CACERT \
-                      -H "Authorization: Bearer $KUBE_TOKEN" \
-                      -H "Content-Type: application/json" \
-                      $APISERVER/api/v1/namespaces/$NAMESPACE/secrets \
-                      -d "$PAYLOAD")
-                    echo "Create result: HTTP $RESULT"
-                  fi
-
-                  if [ "$RESULT" = "200" ] || [ "$RESULT" = "201" ]; then
-                    echo "SUCCESS: ecr-pull-secret ready"
-                  else
-                    echo "ERROR: Failed with HTTP $RESULT"
-                    exit 1
-                  fi
+          {{- include "ecr-refresh.podSpec" (merge (dict "restartPolicy" "Never") .) | nindent 10 }}

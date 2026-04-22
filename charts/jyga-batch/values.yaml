@@ -9,10 +9,10 @@
     s3EndPoint: http://minio-instance-minio:9000
     schedule: "*/5 * * * *"
     
-  aws:
-    accessKey: ""
-    secretKey: ""
-    region: ca-central-1
+  ecr:
+    schedule: "0 */6 * * *"    # toutes les 6 heures
+    registry: "215734518063.dkr.ecr.ca-central-1.amazonaws.com"
+    region: "ca-central-1"     # lu via AWS_REGION dans aws-ecr-creds
 
   image:
     repository: 215734518063.dkr.ecr.ca-central-1.amazonaws.com/vision-system-batch-ml
