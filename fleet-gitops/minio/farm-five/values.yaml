@@ -1,0 +1,7 @@
+
+persistence:
+  enabled: true
+  size: 25Gi
+  
+#  dit au chart de ne pas créer le Secret lui-même
+existingSecret: "postgres-secret"

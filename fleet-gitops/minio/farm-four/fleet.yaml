@@ -1,0 +1,54 @@
+defaultNamespace: farm-server
+
+labels:
+  app.kubernetes.io/name: jyga-minio-four
+
+dependsOn:
+  - selector:
+      matchLabels:
+        app.kubernetes.io/name: jyga-base 
+
+#dependsOn:
+#  - name: jyga-dev-fleet-gitrepo-fleet-gitops-base
+
+helm:
+  repo: https://lwtchami.github.io/helmcharts
+  chart: jyga-minio
+  releaseName: minio-instance
+  recreate: true
+
+targets:
+
+  - name: deploy-0-1-0
+    clusterSelector:
+      matchLabels:
+        Minio: "0.1.0"
+        Farm: "four"
+    helm:
+      version: "0.1.0"
+      valuesFiles:
+        - values.yaml
+
+  - name: no-match-farm
+    clusterSelector:
+      matchExpressions:
+        - key: Farm
+          operator: NotIn
+          values:
+            - "four"
+    ignore:
+      conditions:
+        - type: Ready
+    doNotDeploy: true
+
+  - name: no-match-version
+    clusterSelector:
+      matchExpressions:
+        - key: Minio
+          operator: NotIn
+          values:
+            - "0.1.0"
+    ignore:
+      conditions:
+        - type: Ready
+    doNotDeploy: true

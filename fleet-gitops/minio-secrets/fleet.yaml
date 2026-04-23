@@ -1,7 +1,7 @@
 defaultNamespace: farm-server
 
 labels:
-  app.kubernetes.io/name: jyga-postgres-secrets
+  app.kubernetes.io/name: jyga-minio-secrets
 
 dependsOn:
   - selector:
