@@ -3,3 +3,6 @@ persistence:
 statefulSet:
   spec:
     replicas: 1
+
+# Ajout : dit au chart de ne pas créer le Secret lui-même
+existingSecret: "postgres-secret"

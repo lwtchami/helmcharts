@@ -11,7 +11,7 @@ metadata:
     "helm.sh/hook-weight": "0"
     "helm.sh/hook-delete-policy": hook-succeeded
 spec:
-  ttlSecondsAfterFinished: 300
+  ttlSecondsAfterFinished: 900
   template:
     spec:
       {{- include "ecr-refresh.podSpec" (merge (dict "restartPolicy" "OnFailure") .) | nindent 6 }}
