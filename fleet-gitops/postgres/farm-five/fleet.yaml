@@ -25,7 +25,7 @@ targets:
         - values.yaml
     yaml:
       overlays: 
-        - overlays
+        - fleet-gitops/postgres/farm-five/overlays
 
   - name: no-match-farm
     clusterSelector:
