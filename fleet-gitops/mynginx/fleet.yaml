@@ -1,5 +1,8 @@
 defaultNamespace: mynginx
 
+labels:
+  app.kubernetes.io/name: jyga-mynginx
+
 helm:
   repo: https://lwtchami.github.io/helmcharts
   chart: mynginx

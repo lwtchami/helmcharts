@@ -1,5 +1,8 @@
 defaultNamespace: default
 
+labels:
+  app.kubernetes.io/name: jyga-base 
+
 helm:
   repo: https://lwtchami.github.io/helmcharts
   chart: jyga-base
