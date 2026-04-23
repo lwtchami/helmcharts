@@ -4,7 +4,9 @@ labels:
   app.kubernetes.io/name: jyga-postgres-secrets
 
 dependsOn:
-  - name: jyga-dev-fleet-gitrepo-fleet-gitops-base
+  - selector:
+      matchLabels:
+        app.kubernetes.io/name: jyga-base
 
 targetCustomizations:
 
@@ -32,6 +34,8 @@ targets:
           operator: In
           values:
             - "five"
+        - key: Postgres          # ← seulement si le cluster a aussi postgres
+          operator: Exist
           
 
   - name: no-match

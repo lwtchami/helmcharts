@@ -1,5 +1,8 @@
 defaultNamespace: farm-server
 
+labels:
+  app.kubernetes.io/name: jyga-postgres-batch
+
 dependsOn:
   - name: jyga-dev-fleet-gitrepo-fleet-gitops-minio
   - name: jyga-dev-fleet-gitrepo-fleet-gitops-postgres-fa-2f9ab

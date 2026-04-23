@@ -1,5 +1,8 @@
 defaultNamespace: btop
 
+labels:
+  app.kubernetes.io/name: jyga-btop 
+
 helm:
   repo: https://lwtchami.github.io/helmcharts
   chart: btop

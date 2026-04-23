@@ -1,7 +1,15 @@
 defaultNamespace: farm-server
 
+labels:
+  app.kubernetes.io/name: jyga-minio
+
 dependsOn:
-  - name: jyga-dev-fleet-gitrepo-fleet-gitops-base
+  - selector:
+      matchLabels:
+        app.kubernetes.io/name: jyga-base 
+
+#dependsOn:
+#  - name: jyga-dev-fleet-gitrepo-fleet-gitops-base
 
 helm:
   repo: https://lwtchami.github.io/helmcharts
