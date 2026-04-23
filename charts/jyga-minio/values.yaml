@@ -30,3 +30,5 @@ ingress:
       paths:
         - path: /
           pathType: Prefix
+
+existingSecret: ""
