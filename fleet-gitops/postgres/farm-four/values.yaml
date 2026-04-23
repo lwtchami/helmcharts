@@ -3,3 +3,4 @@ persistence:
 statefulSet:
   spec:
     replicas: 3 
+    
