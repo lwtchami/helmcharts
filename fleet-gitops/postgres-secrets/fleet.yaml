@@ -1,0 +1,48 @@
+defaultNamespace: farm-server
+
+labels:
+  app.kubernetes.io/name: jyga-postgres-secrets
+
+dependsOn:
+  - name: jyga-dev-fleet-gitrepo-fleet-gitops-base
+
+targetCustomizations:
+
+  - name: farm-five
+    clusterSelector:
+      matchLabels:
+        Farm: "five"
+    yaml:
+      overlays:
+        - secrets/farm-five
+
+  - name: farm-four
+    clusterSelector:
+      matchLabels:
+        Farm: "four"
+    yaml:
+      overlays:
+        - secrets/farm-four
+
+targets:
+  - name: match
+    clusterSelector:
+      matchExpressions:
+        - key: Farm
+          operator: In
+          values:
+            - "five"
+            - "four"
+
+  - name: no-match
+    clusterSelector:
+      matchExpressions:
+        - key: Farm
+          operator: NotIn
+          values:
+            - "five"
+            - "four"
+    ignore:
+      conditions:
+        - type: Ready
+    doNotDeploy: true
