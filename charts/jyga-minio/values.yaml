@@ -10,9 +10,13 @@ service:
   apiPort: 9000
   consolePort: 9001
 
-auth:
-  rootUser: admin
-  rootPassword: admin@2026
+secret:
+  name: minio-secret
+  labels:
+    app: minio
+  auth:
+    rootUser: admin
+    rootPassword: admin@2026
 
 persistence:
   enabled: true
@@ -30,5 +34,6 @@ ingress:
       paths:
         - path: /
           pathType: Prefix
+
 
 existingSecret: ""
