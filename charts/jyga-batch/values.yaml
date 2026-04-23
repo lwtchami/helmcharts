@@ -1,21 +1,22 @@
 
-  config:
-    profile: dev
-    datasourceUrl: jdbc:postgresql://postgres-service:5432/postgres
-    datasourceUsername: postgres
-    datasourcePassword: postgres
-    s3AccessKey: admin
-    s3SecretKey: admin@2026
-    s3EndPoint: http://minio-instance-minio:9000
-    schedule: "*/5 * * * *"
-    
-  ecr:
-    schedule: "0 */6 * * *"    # toutes les 6 heures
-    registry: "215734518063.dkr.ecr.ca-central-1.amazonaws.com"
-    region: "ca-central-1"     # lu via AWS_REGION dans aws-ecr-creds
-
-  image:
-    repository: 215734518063.dkr.ecr.ca-central-1.amazonaws.com/vision-system-batch-ml
-    tag: "0.1.9-rc"
-    pullPolicy: Always  # IfNotPresent
+config:
+  profile: dev
+  datasourceUrl: jdbc:postgresql://postgres-service:5432/postgres
+  s3EndPoint: http://minio-instance-minio:9000
+  schedule: "*/5 * * * *"
   
+ecr:
+  schedule: "0 */6 * * *"    # toutes les 6 heures
+  registry: "215734518063.dkr.ecr.ca-central-1.amazonaws.com"
+  region: "ca-central-1"     # lu via AWS_REGION dans aws-ecr-creds
+
+image:
+  repository: 215734518063.dkr.ecr.ca-central-1.amazonaws.com/vision-system-batch-ml
+  tag: "0.1.9-rc"
+  pullPolicy: Always  # IfNotPresent
+  
+  # Noms des secrets existants créés par d'autres charts
+secrets:
+  postgres: "postgres-secret"   # créé par jyga-postgres via SealedSecret
+  minio: "minio-secret"         # créé par jyga-minio via SealedSecret
+  ecr: "aws-ecr-creds"          # créé par jyga-batch-secrets via SealedSecret

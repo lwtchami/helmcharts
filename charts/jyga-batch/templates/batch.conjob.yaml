@@ -27,3 +27,24 @@ spec:
               envFrom:
                 - configMapRef:
                     name: batch-envs
+              env:
+                - name: batch.datasource.ml.farm.username
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgres-secret    # ← Secret déjà créé par postgres
+                      key: POSTGRES_USER
+                - name: batch.datasource.ml.farm.password
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgres-secret    
+                      key: POSTGRES_PASSWORD
+                - name: farm.s3.access-key
+                  valueFrom:
+                    secretKeyRef:
+                      name: minio-secret       # ← Secret déjà créé par minio
+                      key: MINIO_ROOT_USER
+                - name: farm.s3.secret-key
+                  valueFrom:
+                    secretKeyRef:
+                      name: minio-secret
+                      key: MINIO_ROOT_PASSWORD
