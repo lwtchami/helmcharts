@@ -23,6 +23,9 @@ targets:
       version: "0.1.0"
       valuesFiles:
         - values.yaml
+    yaml:
+      overlays: 
+        - overlays
 
   - name: no-match-farm
     clusterSelector:
