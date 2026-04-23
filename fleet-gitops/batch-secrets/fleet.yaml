@@ -1,0 +1,49 @@
+defaultNamespace: farm-server
+
+labels:
+  app.kubernetes.io/name: jyga-batch-secrets
+
+dependsOn:
+  - selector:
+      matchLabels:
+        app.kubernetes.io/name: jyga-base
+
+targetCustomizations:
+
+  - name: farm-five
+    clusterSelector:
+      matchLabels:
+        Farm: "five"
+    yaml:
+      overlays:
+        - secrets/farm-five
+
+  - name: farm-four
+    clusterSelector:
+      matchLabels:
+        Farm: "four"
+    yaml:
+      overlays:
+        - secrets/farm-four
+
+targets:
+  - name: match
+    clusterSelector:
+      matchExpressions:
+        - key: Farm
+          operator: In
+          values:
+            - "five"
+          
+  - name: no-match
+    clusterSelector:
+      matchExpressions:
+        - key: Farm
+          operator: NotIn
+          values:
+            - "five"
+          
+    ignore:
+      conditions:
+        - type: Ready
+    doNotDeploy: true

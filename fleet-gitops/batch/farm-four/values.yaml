@@ -1,0 +1,5 @@
+config:
+  profile: dev
+  datasourceUrl: jdbc:postgresql://postgres-service:5432/postgres
+  s3EndPoint: http://minio-instance-minio:9000
+  schedule: "*/10 * * * *"

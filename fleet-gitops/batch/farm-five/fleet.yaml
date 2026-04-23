@@ -1,0 +1,58 @@
+defaultNamespace: farm-server
+
+labels:
+  app.kubernetes.io/name: jyga-batch-five 
+
+dependsOn:
+  - selector:
+      matchLabels:
+        app.kubernetes.io/name: jyga-minio-five
+  - selector:
+      matchLabels:
+        app.kubernetes.io/name: jyga-postgres-five
+  - selector:
+      matchLabels:
+        app.kubernetes.io/name: jyga-batch-secrets
+
+helm:
+  repo: https://lwtchami.github.io/helmcharts
+  chart: jyga-batch
+  releaseName: batch-instance
+  recreate: true
+
+targets:
+
+  - name: deploy-0-1-0
+    clusterSelector:
+      matchLabels:
+        Batch: "0.1.0"
+        Farm: "five"
+    helm:
+      version: "0.1.0"
+      valuesFiles:
+        - values.yaml
+   
+
+  - name: no-match-farm
+    clusterSelector:
+      matchExpressions:
+        - key: Farm
+          operator: NotIn
+          values:
+            - "five"
+    ignore:
+      conditions:
+        - type: Ready
+    doNotDeploy: true
+
+  - name: no-match-version
+    clusterSelector:
+      matchExpressions:
+        - key: Batch
+          operator: NotIn
+          values:
+            - "0.1.0"
+    ignore:
+      conditions:
+        - type: Ready
+    doNotDeploy: true
