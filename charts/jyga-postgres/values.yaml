@@ -197,3 +197,5 @@ service:
         protocol: TCP
     selector:
       app: postgres
+
+existingSecret: ""
