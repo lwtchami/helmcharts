@@ -4,7 +4,9 @@ labels:
   app.kubernetes.io/name: jyga-postgres-five 
 
 dependsOn:
-  - name: jyga-dev-fleet-gitrepo-fleet-gitops-base
+  - selector:
+      matchLabels:
+        app.kubernetes.io/name: jyga-postgres-secrets
 
 helm:
   repo: https://lwtchami.github.io/helmcharts
@@ -23,9 +25,7 @@ targets:
       version: "0.1.0"
       valuesFiles:
         - values.yaml
-    yaml:
-      overlays: 
-        - fleet-gitops/postgres/farm-five/overlays
+   
 
   - name: no-match-farm
     clusterSelector:
