@@ -26,7 +26,7 @@ spec:
             - containerPort: {{ .Values.service.consolePort }}
           envFrom:
             - secretRef:
-                name: {{ include "jyga-minio.fullname" . }}
+                name: {{ .Values.secret.name }}
           volumeMounts:
             - name: data
               mountPath: /data
