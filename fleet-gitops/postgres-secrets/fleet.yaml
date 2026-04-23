@@ -35,7 +35,7 @@ targets:
           values:
             - "five"
         - key: Postgres          # ← seulement si le cluster a aussi postgres
-          operator: Exist
+          operator: Exists
           
 
   - name: no-match
